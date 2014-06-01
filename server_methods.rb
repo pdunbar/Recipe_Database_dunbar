@@ -12,7 +12,7 @@ def db_connection
 end
 
 def get_recipes()
-  query = "SELECT recipes.id as id, recipes.name as name
+  query = "SELECT recipes.id as recipe_id, recipes.name as name
            FROM recipes"
 
   recipes = db_connection do |conn|
@@ -28,13 +28,20 @@ end
 
 
 def get_recipe(recipe_id)
-  query =
-  ingredients = db_connection do |conn|
+  query = " SELECT recipes.id, recipes.name as name,
+            recipes.instructions as instructions, recipes.description as description
+            FROM recipes
+            WHERE recipes.id = $1"
+  recipe = db_connection do |conn|
     conn.exec_params(query, [recipe_id])
   end
 
-  query = ""
-  recipes = db_connection do |conn|
+  query = "SELECT ingredients.name as ingredient
+           FROM recipes
+           JOIN ingredients on ingredients.recipe_id = recipes.id
+           WHERE recipes.id = $1"
+
+  ingredients = db_connection do |conn|
     conn.exec_params(query, [recipe_id])
   end
   recipe = recipe.to_a
