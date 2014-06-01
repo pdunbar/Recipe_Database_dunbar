@@ -12,13 +12,17 @@ def db_connection
 end
 
 def get_recipes()
-  query = ""
+  query = "SELECT recipes.id as id, recipes.name as name
+           FROM recipes"
 
   recipes = db_connection do |conn|
     conn.exec(query)
   end
 
-  recipes = recipeses.to_a
+  recipes = recipes.to_a
+  recipes = recipes.sort_by do |recipe|
+    recipe["name"]
+  end
   return recipes
 end
 

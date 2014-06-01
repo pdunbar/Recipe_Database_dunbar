@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Recipe Database</title>
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <header>
+    <ul class="navigation">
+      <li><img id = "logo-image" src = "/filmreel.jpg"></li>
+      <li><a id = "brand" href = "/">Recipe Database</a></li>
+      <li><a class = "nav-link" href = "/movies">Recipes</a></li>
+       <li>
+        <form action="/recipes" method="post">
+          <input type="text" id="search_recipes" name="recipe" value="<%=params[:recipe]%>" size="25" placeholder="Search Recipes"/>
+          <input type="submit" />
+    </ul>
+  </header>
+
+  <body>
+
+
+    <div id='main_content'>
+      <%= yield %>
+    </div>
+  </body>
+</html>
