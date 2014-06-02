@@ -1,6 +1,7 @@
 require_relative 'server_methods'
 require 'sinatra'
 
+
 get '/' do
   redirect '/recipes'
 end

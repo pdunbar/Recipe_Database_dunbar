@@ -1,5 +1,6 @@
 require 'pg'
 
+
 def db_connection
   begin
     connection = PG.connect(dbname: 'recipes')
@@ -13,7 +14,8 @@ end
 
 def get_recipes()
   query = "SELECT recipes.id as recipe_id, recipes.name as name
-           FROM recipes"
+           FROM recipes
+           WHERE recipes.description IS NOT NULL"
 
   recipes = db_connection do |conn|
     conn.exec(query)

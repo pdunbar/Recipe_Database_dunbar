@@ -1,22 +1,13 @@
 <h1><%= @recipe[0]["name"]%></h1>
 <br/>
-<h1>Ingredients:</h1>
+<h2>Ingredients:</h2>
   <ul>
     <% @ingredients.each do |ingredient| %>
       <li><%=ingredient["ingredient"] %></li>
     <% end %>
-  </ul>
-<table border ="1">
-  <thead>
-    <tr>
-      <th>Recipe</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><%="#{@recipe[0]["name"]}"%></td>
-      <td><%="#{@recipe[0]["instructions"]}"%></td>
-      <td><%="#{@recipe[0]["description"]}"%></td>
-    </tr>
-  </tbody>
-</table>
+  </ul><br/>
+<h2>Description</h2>
+<p><%= "#{@recipe[0]["description"]}" %></p><br/>
+<h2>Instructions</h2>
+<p><%= "#{@recipe[0]["instructions"]}" %></p><br/>
+
